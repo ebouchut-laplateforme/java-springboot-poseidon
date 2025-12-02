@@ -3,7 +3,12 @@
 Poseidon is a trading Web application written in Java with the Spring Boot Framework.
 It renders Web pages server side using Thymeleaf as a template engine.
 
-## Pre-requisites
+## Project Status
+
+See the [GitHub Project](https://github.com/orgs/ebouchut-laplateforme/projects/6) 
+for up-to-date information.
+
+## Tech Stack 
 
 - [x] Java version 1.8
 - [x] Spring Boot version 2.0.4
@@ -12,14 +17,16 @@ It renders Web pages server side using Thymeleaf as a template engine.
 
 ## Project Setup in IntelliJ IDEA
 
-1. Create project from Initializr: `File` > `New > project` > `Spring Initializr`
-1. Add `lib` repository into `pom.xml`
-1. Add folders
-   - Source root: `src/main/java`
-   - View: `src/main/resources`
-   - Static: `src/main/resource/static`
-1. Create database with name `demo` as configuration in `application.properties`
-1. Run the SQL script to create the tables `doc/data.sql` in the `demo` database. 
+- [x] Create the project skeleton (already done)  
+    2. Create project from Spring Boot Initializr (in IntelliJ): `File` > `New > project` > `Spring Initializr`
+    1. Add `lib` repository into `pom.xml`
+    1. Add folders
+       - Source root: `src/main/java`
+       - View: `src/main/resources`
+       - Static: `src/main/resource/static`
+- [ ] Create a database user named `poseidon`
+- [ ] Create a database named `poseidon` as configured in `src/main/resources/application.properties`
+- [ ] Run the SQL script to create the tables `src/main/resources/db/schema.sql` in the database. 
 
 ## Implement Features
 
