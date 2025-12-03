@@ -6,34 +6,34 @@
 -- using an exotic naming convention!
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-CREATE TABLE BidList (
-  BidListId tinyint(4) NOT NULL AUTO_INCREMENT,
+CREATE TABLE bid_list (
+  bid_list_id tinyint(4) NOT NULL AUTO_INCREMENT,
   account VARCHAR(30) NOT NULL,
   type VARCHAR(30) NOT NULL,
-  bidQuantity DOUBLE,
-  askQuantity DOUBLE,
+  bid_quantity DOUBLE,
+  ask_quantity DOUBLE,
   bid DOUBLE ,
   ask DOUBLE,
   benchmark VARCHAR(125),
-  bidListDate TIMESTAMP,
+  bid_list_date TIMESTAMP,
   commentary VARCHAR(125),
   security VARCHAR(125),
   status VARCHAR(10),
   trader VARCHAR(125),
   book VARCHAR(125),
-  creationName VARCHAR(125),
-  creationDate TIMESTAMP ,
-  revisionName VARCHAR(125),
-  revisionDate TIMESTAMP ,
-  dealName VARCHAR(125),
-  dealType VARCHAR(125),
-  sourceListId VARCHAR(125),
+  creation_name VARCHAR(125),
+  creation_date TIMESTAMP ,
+  revision_name VARCHAR(125),
+  revision_date TIMESTAMP ,
+  deal_name VARCHAR(125),
+  deal_type VARCHAR(125),
+  source_list_id VARCHAR(125),
   side VARCHAR(125),
 
-  PRIMARY KEY (BidListId)
+  PRIMARY KEY (bid_list_id)
 );
 
-CREATE TABLE Trade (
+CREATE TABLE trade (
   TradeId tinyint(4) NOT NULL AUTO_INCREMENT,
   account VARCHAR(30) NOT NULL,
   type VARCHAR(30) NOT NULL,
@@ -59,7 +59,7 @@ CREATE TABLE Trade (
   PRIMARY KEY (TradeId)
 );
 
-CREATE TABLE CurvePoint (
+CREATE TABLE curve_point (
   Id tinyint(4) NOT NULL AUTO_INCREMENT,
   CurveId tinyint,
   asOfDate TIMESTAMP,
@@ -70,7 +70,7 @@ CREATE TABLE CurvePoint (
   PRIMARY KEY (Id)
 );
 
-CREATE TABLE Rating (
+CREATE TABLE rating (
   Id tinyint(4) NOT NULL AUTO_INCREMENT,
   moodysRating VARCHAR(125),
   sandPRating VARCHAR(125),
@@ -80,7 +80,7 @@ CREATE TABLE Rating (
   PRIMARY KEY (Id)
 );
 
-CREATE TABLE RuleName (
+CREATE TABLE rule_name (
   Id tinyint(4) NOT NULL AUTO_INCREMENT,
   name VARCHAR(125),
   description VARCHAR(125),
@@ -92,7 +92,7 @@ CREATE TABLE RuleName (
   PRIMARY KEY (Id)
 );
 
-CREATE TABLE Users (
+CREATE TABLE user (
   Id tinyint(4) NOT NULL AUTO_INCREMENT,
   username VARCHAR(125),
   password VARCHAR(125),

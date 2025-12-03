@@ -9,7 +9,7 @@ import java.sql.Timestamp;
 
 
 @Entity
-@Table(name = "curvepoint")
+@Table(name = "curve_point")
 public class CurvePoint {
     // TODO: Map columns in data table CURVEPOINT with corresponding java fields
 }
