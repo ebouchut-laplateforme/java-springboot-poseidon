@@ -5,7 +5,7 @@
 -- Add 2 users.
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-INSERT INTO Users(
+INSERT INTO user (
     fullname,
     username,
     password,
@@ -13,10 +13,11 @@ INSERT INTO Users(
 ) VALUES (
     "Administrator",
     "admin",
-    "$2a$10$pBV8ILO/s/nao4wVnGLrh.sa/rnr5pDpbeC4E.KNzQWoy8obFZdaa", "ADMIN"
+    "$2a$10$pBV8ILO/s/nao4wVnGLrh.sa/rnr5pDpbeC4E.KNzQWoy8obFZdaa",
+    "ADMIN"
  );
 
-INSERT INTO Users(
+INSERT INTO user (
     fullname,
     username,
     password,
