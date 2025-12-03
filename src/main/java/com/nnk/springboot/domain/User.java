@@ -11,11 +11,12 @@ import javax.validation.constraints.NotBlank;
 @AllArgsConstructor
 @Getter
 @Setter
-@EqualsAndHashCode
+@EqualsAndHashCode(onlyExplicitlyIncluded = true) // Only consider the id attribute/field
 @ToString
 public class User {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @EqualsAndHashCode.Include
     private Integer id;
 
     @Column(name = "user_name")
@@ -24,6 +25,7 @@ public class User {
 
     @Column(name = "password")
     @NotBlank(message = "Password is mandatory")
+    @ToString.Exclude // Do not expose the password in toString()
     private String password;
 
     @Column(name = "full_name")
