@@ -2,17 +2,15 @@ package com.nnk.springboot;
 
 import com.nnk.springboot.domain.BidList;
 import com.nnk.springboot.repositories.BidListRepository;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 import java.util.Optional;
 
-@RunWith(SpringRunner.class)
+import static org.junit.jupiter.api.Assertions.*;
+
 @SpringBootTest
 public class BidTests {
 
@@ -21,26 +19,34 @@ public class BidTests {
 
 	@Test
 	public void bidListTest() {
-		BidList bid = new BidList("Account Test", "Type Test", 10d);
+		BidList bid = BidList.builder()
+				.account("Account Test")
+				.type("Type Test")
+				.bidQuantity(10D)
+				.build();
 
-		// Save
+		// ~~~~ Save
 		bid = bidListRepository.save(bid);
-		Assert.assertNotNull(bid.getBidListId());
-		Assert.assertEquals(bid.getBidQuantity(), 10d, 10d);
 
-		// Update
-		bid.setBidQuantity(20d);
+		assertNotNull(bid.getBidListId());
+		assertEquals(10D, bid.getBidQuantity());
+
+		// ~~~~ Update
+		bid.setBidQuantity(20D);
 		bid = bidListRepository.save(bid);
-		Assert.assertEquals(bid.getBidQuantity(), 20d, 20d);
 
-		// Find
+		assertEquals(20D, bid.getBidQuantity());
+
+		// ~~~~ Find
 		List<BidList> listResult = bidListRepository.findAll();
-		Assert.assertTrue(listResult.size() > 0);
 
-		// Delete
+		assertFalse(listResult.isEmpty());
+
+		// ~~~~ Delete
 		Integer id = bid.getBidListId();
 		bidListRepository.delete(bid);
+
 		Optional<BidList> bidList = bidListRepository.findById(id);
-		Assert.assertFalse(bidList.isPresent());
+		assertFalse(bidList.isPresent());
 	}
 }

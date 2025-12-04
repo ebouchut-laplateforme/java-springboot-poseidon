@@ -30,7 +30,8 @@ import java.time.Instant;
  */
 @Entity
 @Table(name = "bid_list")
-@EntityListeners(AuditingEntityListener.class) // Enable auditing for fields annotated with (@CreatedDate, @CreateBy, @LastModifiedDate, @LastModifiedBy)
+@EntityListeners(AuditingEntityListener.class) // Enable auditing for fields annotated with (@CreatedDate, @CreatedBy, @LastModifiedDate, @LastModifiedBy)
+@Builder
 @Getter
 @Setter
 @NoArgsConstructor
