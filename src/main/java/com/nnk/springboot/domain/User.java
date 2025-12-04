@@ -14,6 +14,7 @@ import javax.validation.constraints.NotBlank;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true) // Only consider the id attribute/field
 @ToString
 public class User {
+    @Column(name = "id")
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
