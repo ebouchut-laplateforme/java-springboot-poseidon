@@ -6,8 +6,8 @@
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 INSERT INTO user (
-    fullname,
-    username,
+    full_name,
+    user_name,
     password,
     role
 ) VALUES (
@@ -18,8 +18,8 @@ INSERT INTO user (
  );
 
 INSERT INTO user (
-    fullname,
-    username,
+    full_name,
+    user_name,
     password,
     role
 ) VALUES (

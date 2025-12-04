@@ -6,7 +6,7 @@
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 CREATE TABLE bid_list (
-    bid_list_id tinyint(4) PRIMARY KEY AUTO_INCREMENT,
+    bid_list_id INTEGER PRIMARY KEY AUTO_INCREMENT,
     account VARCHAR(30) NOT NULL,
     type VARCHAR(30) NOT NULL,
     bid_quantity DOUBLE,
@@ -31,7 +31,7 @@ CREATE TABLE bid_list (
 );
 
 CREATE TABLE trade (
-    trade_id tinyint(4) PRIMARY KEY AUTO_INCREMENT,
+    trade_id INTEGER PRIMARY KEY AUTO_INCREMENT,
     account VARCHAR(30) NOT NULL,
     type VARCHAR(30) NOT NULL,
     buy_quantity DOUBLE,
@@ -55,9 +55,9 @@ CREATE TABLE trade (
 );
 
 CREATE TABLE curve_point (
-    id tinyint(4) PRIMARY KEY AUTO_INCREMENT,
+    id INTEGER PRIMARY KEY AUTO_INCREMENT,
 
-    curve_id tinyint,
+    curve_id INTEGER,
     as_of_date TIMESTAMP,
     term DOUBLE ,
     value DOUBLE ,
@@ -65,16 +65,16 @@ CREATE TABLE curve_point (
 );
 
 CREATE TABLE rating (
-    id tinyint(4) PRIMARY KEY AUTO_INCREMENT,
+    id INTEGER PRIMARY KEY AUTO_INCREMENT,
 
     moodys_rating VARCHAR(125),
     sand_prating VARCHAR(125),
     fitch_rating VARCHAR(125),
-    order_number tinyint
+    order_number INTEGER
 );
 
 CREATE TABLE rule_name (
-    id tinyint(4) PRIMARY KEY AUTO_INCREMENT,
+    id INTEGER PRIMARY KEY AUTO_INCREMENT,
 
     name VARCHAR(125),
     description VARCHAR(125),
@@ -85,7 +85,7 @@ CREATE TABLE rule_name (
 );
 
 CREATE TABLE user (
-    id tinyint(4) PRIMARY KEY AUTO_INCREMENT,
+    id INTEGER PRIMARY KEY AUTO_INCREMENT,
 
     user_name VARCHAR(125),
     password VARCHAR(125),
