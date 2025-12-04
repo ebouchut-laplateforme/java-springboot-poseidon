@@ -14,6 +14,7 @@ import java.time.Instant;
 
 @Entity
 @Table(name = "curve_point")
+@EntityListeners(AuditingEntityListener.class) // Enable auditing for fields annotated with (@CreatedDate, @CreatedBy, @LastModifiedDate, @LastModifiedBy)
 @Builder
 @Getter
 @Setter
@@ -21,7 +22,6 @@ import java.time.Instant;
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @ToString
-@EntityListeners(AuditingEntityListener.class) // Enable auditing for fields annotated with (@CreatedDate, @CreateBy, @LastModifiedDate, @LastModifiedBy)
 public class CurvePoint {
     @Column(name = "id")
     @Id
@@ -41,7 +41,12 @@ public class CurvePoint {
     @Column(name = "value")
     private Double value;
 
-    @Column(name = "creation_date", nullable = false, updatable = false)
+    @Column(
+            name = "creation_date",
+            nullable = false,
+            insertable = false,
+            updatable = false
+    )
     @CreatedDate
     private Instant creationDate;
 

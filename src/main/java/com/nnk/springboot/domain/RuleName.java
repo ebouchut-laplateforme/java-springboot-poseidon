@@ -7,7 +7,6 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "rule_name")
-@EntityListeners(AuditingEntityListener.class) // Enable auditing for fields annotated with (@CreatedDate, @CreatedBy, @LastModifiedDate, @LastModifiedBy)
 @Builder
 @Getter
 @Setter
@@ -35,7 +34,7 @@ public class RuleName {
     @Column(name = "template")
     private String template;
 
-    @Column(name = "sql_srt")
+    @Column(name = "sql_str")
     private String sqlStr;
 
     @Column(name = "sql_part")

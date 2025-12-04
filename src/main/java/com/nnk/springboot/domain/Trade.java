@@ -2,12 +2,15 @@ package com.nnk.springboot.domain;
 
 import lombok.*;
 import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.sql.Timestamp;
+import java.time.Instant;
 
 
 @Entity
@@ -66,20 +69,38 @@ public class Trade {
     @Column(name = "book")
     private String book;
 
-    @Column(name = "creation_name")
+    @Column(
+            name = "creation_name",
+            nullable = false,
+            insertable = false
+    )
     @CreatedBy
     private String creationName;
 
-    @Column(name = "creation_date", nullable = false, updatable = false)
-    private Timestamp creationDate;
+    @Column(
+            name = "creation_date",
+            nullable = false,
+            insertable = false,
+            updatable = false
+    )
+    @CreatedDate
+    private Instant creationDate;
 
-    @Column(name = "revision_name", nullable = false)
-    @CreatedBy
+    @Column(
+            name = "revision_name",
+            nullable = false,
+            insertable = false
+    )
+    @LastModifiedBy
     private String revisionName;
 
-    @Column(name = "revision_name", nullable = false)
-    @LastModifiedBy
-    private Timestamp revisionDate;
+    @Column(
+            name = "revision_date",
+            nullable = false,
+            insertable = false
+    )
+    @LastModifiedDate
+    private Instant revisionDate;
 
     @Column(name = "deal_name")
     private String dealName;

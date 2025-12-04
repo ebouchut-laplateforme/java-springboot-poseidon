@@ -94,7 +94,12 @@ public class BidList {
      * Who created this <code>BidList</code>.
      * @see com.nnk.springboot.config.JpaAuditingConfiguration
      */
-    @Column(name = "creation_name", nullable = false, updatable = false)
+    @Column(
+            name = "creation_name",
+            nullable = false,
+            insertable = false,
+            updatable = false
+    )
     @CreatedBy
     private String creationName;
 
@@ -102,7 +107,12 @@ public class BidList {
      * When was this <code>BidList</code> created
      * @see com.nnk.springboot.config.JpaAuditingConfiguration
      */
-    @Column(name = "creation_date", nullable = false, updatable = false)
+    @Column(
+            name = "creation_date",
+            nullable = false,
+            insertable = false,
+            updatable = false
+    )
     @CreatedDate
     private Instant creationDate;
 
