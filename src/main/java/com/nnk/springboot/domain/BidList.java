@@ -3,6 +3,9 @@ package com.nnk.springboot.domain;
 import lombok.*;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -10,6 +13,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.PositiveOrZero;
 import java.sql.Timestamp;
+import java.time.Instant;
 
 /**
  * A domain object (entity) modeling a list of bids.
@@ -26,7 +30,8 @@ import java.sql.Timestamp;
  */
 @Entity
 @Table(name = "bid_list")
-@Getter // Call the Lombok annotation family to the rescue ;-)
+@EntityListeners(AuditingEntityListener.class) // Enable auditing for fields annotated with (@CreatedDate, @CreateBy, @LastModifiedDate, @LastModifiedBy)
+@Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
@@ -86,29 +91,35 @@ public class BidList {
 
     /**
      * Who created this <code>BidList</code>.
+     * @see com.nnk.springboot.config.JpaAuditingConfiguration
      */
-    @Column(name = "creation_name")
+    @Column(name = "creation_name", nullable = false, updatable = false)
     @CreatedBy
     private String creationName;
 
     /**
      * When was this <code>BidList</code> created
+     * @see com.nnk.springboot.config.JpaAuditingConfiguration
      */
-    @Column(name = "creation_date", nullable = false)
+    @Column(name = "creation_date", nullable = false, updatable = false)
     @CreatedDate
-    private Timestamp creationDate;
+    private Instant creationDate;
 
     /**
      * Who updated this <code>BidList</code>.
+     * @see com.nnk.springboot.config.JpaAuditingConfiguration
      */
-    @Column(name="revision_name")
+    @Column(name="revision_name", nullable = false)
+    @LastModifiedBy
     private String revisionName;
 
     /**
      * When was this <code>BidList</code> updated
+     * @see com.nnk.springboot.config.JpaAuditingConfiguration
      */
     @Column(name = "revision_date", nullable = false)
-    private Timestamp revisionDate;
+    @LastModifiedDate
+    private Instant revisionDate;
 
     @Column(name = "deal_name")
     private String dealName;
