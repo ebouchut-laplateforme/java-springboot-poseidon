@@ -1,0 +1,54 @@
+
+# ~~~~~~~~~~~~~~~~~~
+# Logging Level
+# ~~~~~~~~~~~~~~~~~~
+logging:
+  level:
+    org.springframework: INFO
+
+    # Log Hibernate SQL statements
+    org.hibernate.SQL: DEBUG
+
+    # Log incoming Web request details
+    web: DEBUG
+
+    # Poseidon logging level (all app)
+    com.nnk.springboot: DEBUG
+
+  # Poseidon logging level (using a custom logging level group defined below)
+  #    poseidon: DEBUG
+
+  # Custom logging group (more granular)
+#  group:
+#    poseidon:
+#      - com.nnk.springboot.config
+#      - com.nnk.springboot.repositories
+#      - com.nnk.springboot.controllers
+
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Database Connection Configuration
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+spring:
+  datasource:
+    # Driver class name commented because Spring Boot auto-detects the driver
+    # (from the datasource URL)
+#   driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3380/poseidon?serverTimezone=UTC&zeroDateTimeBehavior=CONVERT_TO_NULL
+    username: poseidon
+    password: sn3ZJ2GPQgRK9QCwCvQjWKnARQ7rQxqh
+
+  # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  # Hibernate Configuration
+  # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  jpa:
+    hibernate.ddl-auto: validate
+    show-sql: true
+
+    # Generate DDL and write to file
+#    properties:
+#      javax.persistence.schema-generation.scripts:
+#        action: create
+#        create-target: schema.sql
+#        create-source: metadata

@@ -25,8 +25,9 @@ for up-to-date information.
        - View: `src/main/resources`
        - Static: `src/main/resource/static`
 - [ ] Create a database user named `poseidon`
-- [ ] Create a database named `poseidon` as configured in `src/main/resources/application.properties`
-- [ ] Run the SQL script to create the tables `src/main/resources/db/schema.sql` in the database. 
+- [ ] Create a database named `poseidon` as configured in `src/main/resources/application.yaml`
+- [ ] Run the SQL script to create the tables `src/main/resources/db/schema.sql` in this database. 
+- [ ] Run the SQL script to populate the tables of this database: `src/main/resources/db/data.sql` 
 
 ## Implement Features
 
