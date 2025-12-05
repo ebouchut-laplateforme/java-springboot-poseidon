@@ -1,6 +1,5 @@
 package com.nnk.springboot;
 
-import ch.qos.logback.classic.util.LogbackMDCAdapter;
 import com.nnk.springboot.domain.BidList;
 import com.nnk.springboot.repositories.BidListRepository;
 import org.junit.jupiter.api.Test;
@@ -9,7 +8,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.test.context.support.WithMockUser;
 
 import javax.persistence.EntityManager;
-import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
