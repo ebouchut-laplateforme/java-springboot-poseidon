@@ -6,7 +6,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 /**
  * This configuration class enables auditing.
  * A configuration for entity fields annotated
- * with <code>@CreatedAt</code> and <code>@CreatedBy</code>
+ * with <code>@CreatedDate</code>, <code>@CreatedBy</code>,
+ * <code>@LastModificationDate</code>, <code>@LastModifiedBy</code>
  * to be set automatically.
  *
  * @see AuditorAwareImpl
