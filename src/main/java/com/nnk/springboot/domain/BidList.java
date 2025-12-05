@@ -61,8 +61,7 @@ public class BidList {
     @PositiveOrZero
     private Double askQuantity;
 
-    @Column(name = "bid", nullable = false)
-    @NotNull
+    @Column(name = "bid")
     @Positive
     private Double bid;
 
@@ -97,7 +96,6 @@ public class BidList {
     @Column(
             name = "creation_name",
             nullable = false,
-            insertable = false,
             updatable = false
     )
     @CreatedBy
@@ -110,7 +108,6 @@ public class BidList {
     @Column(
             name = "creation_date",
             nullable = false,
-            insertable = false,
             updatable = false
     )
     @CreatedDate

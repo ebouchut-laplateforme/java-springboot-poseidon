@@ -14,7 +14,7 @@ import java.time.Instant;
 
 
 @Entity
-@Table(name = "trade")
+@Table(name = "trade") // Map the entity to the corresponding database table name
 @EntityListeners(AuditingEntityListener.class) // Enable auditing for fields annotated with (@CreatedDate, @CreatedBy, @LastModifiedDate, @LastModifiedBy)
 @Builder
 @Getter
@@ -72,7 +72,7 @@ public class Trade {
     @Column(
             name = "creation_name",
             nullable = false,
-            insertable = false
+            updatable = false
     )
     @CreatedBy
     private String creationName;
@@ -80,7 +80,6 @@ public class Trade {
     @Column(
             name = "creation_date",
             nullable = false,
-            insertable = false,
             updatable = false
     )
     @CreatedDate
@@ -88,16 +87,14 @@ public class Trade {
 
     @Column(
             name = "revision_name",
-            nullable = false,
-            insertable = false
+            nullable = false
     )
     @LastModifiedBy
     private String revisionName;
 
     @Column(
             name = "revision_date",
-            nullable = false,
-            insertable = false
+            nullable = false
     )
     @LastModifiedDate
     private Instant revisionDate;

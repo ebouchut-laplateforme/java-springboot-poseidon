@@ -5,6 +5,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.Instant;
 
 
@@ -26,6 +27,7 @@ public class CurvePoint {
     private Integer id;
 
     @Column(name = "curve_id")
+    @NotNull
     private Integer curveId;
 
     @Column(name = "as_of_date")
@@ -40,7 +42,6 @@ public class CurvePoint {
     @Column(
             name = "creation_date",
             nullable = false,
-            insertable = false,
             updatable = false
     )
     @CreatedDate

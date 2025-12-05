@@ -1,11 +1,15 @@
 package com.nnk.springboot;
 
+import ch.qos.logback.classic.util.LogbackMDCAdapter;
 import com.nnk.springboot.domain.BidList;
 import com.nnk.springboot.repositories.BidListRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.test.context.support.WithMockUser;
 
+import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,7 +21,11 @@ public class BidTests {
 	@Autowired
 	private BidListRepository bidListRepository;
 
+	@Autowired
+	private EntityManager entityManager;
+
 	@Test
+	@WithMockUser(username = "joe")
 	public void bidListTest() {
 		BidList bid = BidList.builder()
 				.account("Account Test")
@@ -26,10 +34,22 @@ public class BidTests {
 				.build();
 
 		// ~~~~ Save
-		bid = bidListRepository.save(bid);
+		BidList savedBidList = bidListRepository.saveAndFlush(bid);
 
-		assertNotNull(bid.getBidListId());
-		assertEquals(10D, bid.getBidQuantity());
+		assertNotNull(savedBidList.getBidListId());
+		assertEquals(10D, savedBidList.getBidQuantity());
+		assertEquals("Type Test", savedBidList.getType());
+
+		// Invalidate the in-memory entity cache
+		// to ensure upcoming find.* method call will read from the database
+		entityManager.clear();
+
+		BidList foundBidList = bidListRepository
+				.findById(savedBidList.getBidListId())
+				.orElseThrow(() -> new IllegalArgumentException("Cannot find the BidList in DB"));
+
+		assertEquals(10D, foundBidList.getBidQuantity());
+		assertEquals("Type Test", foundBidList.getType());
 
 		// ~~~~ Update
 		bid.setBidQuantity(20D);
